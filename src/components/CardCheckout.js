@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -114,6 +115,20 @@ const CardCheckout = () => {
               <path d="M1082 1H1V105H1149V36.8621L1082 1Z" stroke="white" />
             </svg>
           </button>
+
+          <p className="amc-checkout__legal">
+            Payments and NFT delivery are processed by Crossmint. By continuing
+            you agree to our{" "}
+            <Link to="/privacy">Privacy Policy</Link> and Crossmint&apos;s{" "}
+            <a
+              href="https://www.crossmint.com/legal/privacy-policy"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Privacy Policy
+            </a>
+            .
+          </p>
         </form>
       ) : null}
 

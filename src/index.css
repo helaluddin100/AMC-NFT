@@ -1972,6 +1972,26 @@ a {
     animation: amc-checkout-rise 0.55s ease both;
 }
 
+.amc-checkout__legal {
+    position: relative;
+    z-index: 1;
+    margin: 18px auto 0;
+    width: min(420px, 100%);
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 12px;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+.amc-checkout__legal a {
+    color: #e8a0a0;
+    text-decoration: underline;
+}
+
+.amc-checkout__legal a:hover {
+    color: #fff;
+}
+
 .amc-checkout__error {
     position: relative;
     z-index: 1;
