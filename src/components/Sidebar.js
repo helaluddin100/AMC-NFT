@@ -36,7 +36,7 @@ const Sidebar = ({ active, toggleSidebar }) => {
       setWalletConnected(true);
     } else {
       window.open(
-        `https://metamask.app.link/dapp/apemafiaclub.com${pagelocation}`
+        `https://metamask.app.link/dapp/appmafiaclub.netlify.app${pagelocation}`
       );
     }
   };

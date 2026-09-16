@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const LAST_UPDATED = "September 17, 2026";
-const SITE_URL = "https://apemafiaclub.com";
+const SITE_URL = "https://appmafiaclub.netlify.app";
 const CONTACT_EMAIL = "privacy@apemafiaclub.com";
 const CROSSMINT_PRIVACY = "https://www.crossmint.com/legal/privacy-policy";
 const CROSSMINT_TERMS = "https://www.crossmint.com/legal/terms-of-service";
