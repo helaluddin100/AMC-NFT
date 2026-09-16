@@ -7,7 +7,6 @@ function Timer() {
 
   const [hour1, setHour1] = useState(0);
   const [hour2, setHour2] = useState(0);
-  const [hour3, setHour3] = useState(0);
 
   const [minute1, setMinute1] = useState(0);
   const [minute2, setMinute2] = useState(0);

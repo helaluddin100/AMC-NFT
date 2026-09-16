@@ -24,7 +24,7 @@ const Accordion = ({ expanded = false, children }) => {
 			setHeaderHeight(parent.children[0].scrollHeight);
 			setParentHeight(parent.offSetHeight);
 		}
-	}, [ref.current]);
+	}, []);
 
 	const modifiedChildren = Children.map(children, (child, ind) => {
 		if (ind === 0) return cloneElement(child, { open, onClick: toggle });

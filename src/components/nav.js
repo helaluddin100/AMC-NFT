@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useState } from "react";
+import { useLocation, Link } from "react-router-dom";
 import Web3 from "web3";
 import Web3Modal from "web3modal";
-import { Link } from "react-router-dom";
 import NavLink from "./NavLink";
 import Sidebar from "./Sidebar";
 const Navigation = () => {
@@ -14,7 +13,7 @@ const Navigation = () => {
   // ==========================mint value ==================
   const [walletConnected, setWalletConnected] = useState(false);
 
-  const [pagelocation, setPageLocation] = useState(useLocation().pathname);
+  const pagelocation = useLocation().pathname;
 
   // Connect Wallet
   const connectWallet = async () => {
@@ -32,12 +31,11 @@ const Navigation = () => {
 
       web3.eth.net.getId();
 
-      const addresses = await web3.eth.getAccounts();
-      const address = addresses[0];
+      await web3.eth.getAccounts();
 
       const { ethereum } = window;
 
-      const networkId = await ethereum.request({
+      await ethereum.request({
         method: "net_version",
       });
 
@@ -57,6 +55,7 @@ const Navigation = () => {
             <a
               href="https://discord.gg/B6UmHqZB3B"
               target="_BLANK"
+              rel="noreferrer"
               className="icon-wrapper"
             >
               <svg
@@ -77,6 +76,7 @@ const Navigation = () => {
             <a
               href="https://twitter.com/apemafiaclub"
               target="_BLANK"
+              rel="noreferrer"
               className="icon-wrapper"
             >
               <svg
@@ -95,6 +95,7 @@ const Navigation = () => {
             <a
               href="https://instagram.com/apemafiaclub"
               target="_BLANK"
+              rel="noreferrer"
               className="icon-wrapper"
             >
               <svg

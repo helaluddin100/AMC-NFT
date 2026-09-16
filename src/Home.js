@@ -1,5 +1,4 @@
-// import React from "react";
-import React, { useEffect, useState } from "react";
+import React from "react";
 // data
 import { faqData, communityData, roadmapData, teamData } from "./data/data";
 
@@ -131,7 +130,10 @@ function Home() {
               data-aos-easing="ease-out-cubic"
               data-aos-duration="2000"
             >
-              <img src="https://musicpromotiontoday.com/amc/mockup-1.gif" />
+              <img
+                src="https://musicpromotiontoday.com/amc/mockup-1.gif"
+                alt="Ape Mafia Club NFT mockup"
+              />
             </div>
           </div>
         </div>

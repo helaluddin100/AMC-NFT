@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import NavLink from "./NavLink";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Web3 from "web3";
 import Web3Modal from "web3modal";
 const Sidebar = ({ active, toggleSidebar }) => {
   // ==========================mint value ==================
   const [walletConnected, setWalletConnected] = useState(false);
 
-  const [pagelocation, setPageLocation] = useState(useLocation().pathname);
+  const pagelocation = useLocation().pathname;
 
   // Connect Wallet
   const connectWallet = async () => {
@@ -25,12 +25,11 @@ const Sidebar = ({ active, toggleSidebar }) => {
 
       web3.eth.net.getId();
 
-      const addresses = await web3.eth.getAccounts();
-      const address = addresses[0];
+      await web3.eth.getAccounts();
 
       const { ethereum } = window;
 
-      const networkId = await ethereum.request({
+      await ethereum.request({
         method: "net_version",
       });
 

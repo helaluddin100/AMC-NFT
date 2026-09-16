@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import Web3 from "web3";
 import Web3Modal from "web3modal";
-import { Link } from "react-router-dom";
 import axios from "axios";
 const MintSection = () => {
   // ==========================mint value ==================
@@ -10,7 +9,7 @@ const MintSection = () => {
 
   const [totalMinted, setTotalMinted] = useState(0);
   const [value, setValue] = useState(1);
-  const [pagelocation, setPageLocation] = useState(useLocation().pathname);
+  const pagelocation = useLocation().pathname;
   // Contract Info
   const CONTRACT_ADDRESS = "0xbA5DAde129B304E9b487c47C0B8Fa8eF2fa93709";
   const CONTRACT_ABI = [
@@ -494,12 +493,11 @@ const MintSection = () => {
 
       web3.eth.net.getId();
 
-      const addresses = await web3.eth.getAccounts();
-      const address = addresses[0];
+      await web3.eth.getAccounts();
 
       const { ethereum } = window;
 
-      const networkId = await ethereum.request({
+      await ethereum.request({
         method: "net_version",
       });
 
@@ -512,25 +510,31 @@ const MintSection = () => {
   };
 
   // Fetch
-  useEffect(async () => {
-    if (Web3.givenProvider) {
-      if (walletConnected) {
-        const web3 = new Web3(Web3.givenProvider);
-        await Web3.givenProvider.enable();
+  useEffect(() => {
+    const fetchSupply = async () => {
+      if (Web3.givenProvider) {
+        if (walletConnected) {
+          const web3 = new Web3(Web3.givenProvider);
+          await Web3.givenProvider.enable();
 
-        const contract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
+          const contract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
 
-        contract.methods
-          .totalSupply()
-          .call()
-          .then((response) => {
-            setTotalMinted(response);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+          contract.methods
+            .totalSupply()
+            .call()
+            .then((response) => {
+              setTotalMinted(response);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }
       }
-    }
+    };
+
+    fetchSupply();
+    // CONTRACT_ABI is stable module-level data defined in this file
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [walletConnected]);
 
   useEffect(() => {
